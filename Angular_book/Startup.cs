@@ -31,6 +31,12 @@ namespace Angular_book
             {
                 optionsAction.UseSqlServer(Configuration.GetConnectionString("BookDB"));
             });
+
+            services.AddCors(option => option.AddPolicy("CorsPolicy", builder =>
+            {
+                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            }));
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -42,6 +48,7 @@ namespace Angular_book
             }
 
             app.UseRouting();
+            app.UseCors("CorsPolicy");
 
             app.UseAuthorization();
 

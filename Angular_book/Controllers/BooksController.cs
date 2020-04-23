@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Angular_book.Models;
+using Microsoft.AspNetCore.Cors;
 
 namespace Angular_book.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("CorsPolicy")] 
     public class BooksController : ControllerBase
     {
         private readonly AbContext _context;
